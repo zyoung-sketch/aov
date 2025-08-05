@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>玩家資料</title></head>
+<body>
+<h2>玩家：{{ name }}</h2>
+{% if player %}
+<p>等級：{{ player['level'] }}</p>
+<p>勝率：{{ player['win_rate'] }}%</p>
+<h3>造型：</h3>
+<ul>
+  {% for skin in player['skins'] %}
+  <li>{{ skin }}</li>
+  {% endfor %}
+</ul>
+<h3>最近戰績：</h3>
+<ul>
+  {% for match in player['matches'] %}
+  <li>{{ match['hero'] }} - {{ match['result'] }} - 擊殺: {{ match['kills'] }} 死亡: {{ match['deaths'] }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>查無此玩家</p>
+{% endif %}
+<a href="/">回首頁</a>
+</body>
+</html>
