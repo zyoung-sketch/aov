@@ -1,4 +1,4 @@
-
+import os
 from flask import Flask, render_template, request, redirect, url_for
 from db import get_player, add_player, add_match, add_skin
 
@@ -46,5 +46,5 @@ def add_skin_route():
     return render_template("add_skin.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
-    
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host="0.0.0.0", port=port, debug=True)
